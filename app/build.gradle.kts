@@ -3,6 +3,14 @@ plugins {
     alias(libs.plugins.kotlin.compose)
 }
 
+val ernNamesOwner = providers.gradleProperty("ernNames.owner").getOrElse("SEParsons1")
+val ernNamesRepo = providers.gradleProperty("ernNames.repo").getOrElse("ern-names")
+val ernNamesToken = providers.gradleProperty("ernNames.token")
+    .orElse(providers.gradleProperty("gpr.key"))
+    .getOrElse("")
+    .replace("\\", "\\\\")
+    .replace("\"", "\\\"")
+
 android {
     namespace = "com.vicarriers.maxicodescanner"
     compileSdk {
@@ -18,6 +26,9 @@ android {
         versionCode = 1
         versionName = "1.0"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        buildConfigField("String", "ERN_NAMES_OWNER", "\"$ernNamesOwner\"")
+        buildConfigField("String", "ERN_NAMES_REPO", "\"$ernNamesRepo\"")
+        buildConfigField("String", "ERN_NAMES_TOKEN", "\"$ernNamesToken\"")
     }
 
     buildTypes {
@@ -43,6 +54,7 @@ android {
 
     buildFeatures {
         compose = true
+        buildConfig = true
     }
 }
 

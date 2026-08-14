@@ -27,6 +27,7 @@ import com.vicarriers.maxicodescanner.ui.theme.Muted
 fun ScanScreen(
     rawPayload: String,
     tracking: String,
+    name: String,
     city: String,
     postalCode: String,
     modifier: Modifier = Modifier,
@@ -40,6 +41,7 @@ fun ScanScreen(
         ) {
             RawPayloadField(rawPayload)
             ResultField(label = "Tracking number", value = tracking)
+            ResultField(label = "Name", value = name, maxLines = 2)
             ResultField(label = "City", value = city)
             ResultField(label = "Postal code", value = postalCode)
         }
@@ -73,7 +75,7 @@ private fun RawPayloadField(rawPayload: String) {
 }
 
 @Composable
-private fun ResultField(label: String, value: String) {
+private fun ResultField(label: String, value: String, maxLines: Int = 1) {
     Column(verticalArrangement = Arrangement.spacedBy(6.dp)) {
         Text(
             text = label,
@@ -89,7 +91,7 @@ private fun ResultField(label: String, value: String) {
             Text(
                 text = value,
                 style = MaterialTheme.typography.bodyLarge,
-                maxLines = 1,
+                maxLines = maxLines,
             )
         }
     }
