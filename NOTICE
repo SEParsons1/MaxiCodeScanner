@@ -1,0 +1,12 @@
+Postal code to place-name data in app/src/main/assets/postal_codes.db is derived from:
+
+1. GeoNames (https://www.geonames.org/), licensed under Creative Commons
+   Attribution 4.0 International (CC BY 4.0). See
+   app/src/main/assets/licenses/geonames.txt. A link back to
+   www.geonames.org is the requested attribution.
+
+2. Statistics Canada, National Address Register, July 2025
+   (https://www150.statcan.gc.ca/n1/en/catalogue/46260002), licensed under
+   the Statistics Canada Open Licence. See
+   app/src/main/assets/licenses/statcan.txt.
+   https://www.statcan.gc.ca/en/reference/licence

@@ -1,0 +1,15 @@
+*.iml
+.gradle/
+.idea/
+.DS_Store
+build/
+/captures
+.externalNativeBuild
+.cxx
+local.properties
+*.apk
+*.ap_
+/tools/CA_full.txt
+/tools/CA_full.csv.zip
+/tools/postal.tsv
+
