@@ -9,7 +9,4 @@ build/
 local.properties
 *.apk
 *.ap_
-/tools/CA_full.txt
-/tools/CA_full.csv.zip
-/tools/postal.tsv
 

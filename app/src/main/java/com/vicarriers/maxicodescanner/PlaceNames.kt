@@ -5,7 +5,7 @@ object PlaceNames {
         "NORTH PENDER",
         "SOUTH PENDER",
         "SALT SPRING",
-        "SALISPRING",
+        "SALTSPRING",
         "GABRIOLA",
         "SATURNA",
         "MAYNE",
@@ -21,6 +21,9 @@ object PlaceNames {
         "KEATS",
         "LASQUETI",
         "MALCOLM",
+        "PENELAKUT",
+        "PROTECTION",
+        "DENNY",
     ).sortedByDescending { it.length }
 
     fun display(placeName: String): String {

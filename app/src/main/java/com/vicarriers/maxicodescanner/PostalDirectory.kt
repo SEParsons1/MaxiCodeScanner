@@ -6,8 +6,7 @@ import java.io.File
 import java.io.FileOutputStream
 
 /**
- * Offline Canadian postal-code directory: GeoNames CA_full overlaid with
- * Statistics Canada NAR mailing municipalities (July 2025).
+ * Offline postal-code directory for the communities this scanner serves.
  */
 class PostalDirectory(context: Context) {
     private val database: SQLiteDatabase
@@ -51,7 +50,7 @@ class PostalDirectory(context: Context) {
 
     companion object {
         private const val DB_NAME = "postal_codes.db"
-        private const val DB_VERSION = 2
+        private const val DB_VERSION = 15
         private const val PREFS = "postal_directory"
         private const val PREF_VERSION = "db_version"
     }
