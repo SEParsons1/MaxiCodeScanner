@@ -19,6 +19,7 @@ class MainActivity : ComponentActivity() {
     private val scanBuffer = StringBuilder()
     private lateinit var postalDirectory: PostalDirectory
     private lateinit var dataWedge: DataWedgeController
+    private lateinit var decodeSound: DecodeSound
 
     private var rawPayload by mutableStateOf("")
     private var tracking by mutableStateOf("")
@@ -30,6 +31,7 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         postalDirectory = PostalDirectory(this)
         dataWedge = DataWedgeController(this)
+        decodeSound = DecodeSound(this)
         setContent {
             MaxiCodeScannerTheme {
                 Surface(modifier = Modifier.fillMaxSize().systemBarsPadding()) {
@@ -60,6 +62,7 @@ class MainActivity : ComponentActivity() {
     }
 
     override fun onDestroy() {
+        decodeSound.release()
         postalDirectory.close()
         super.onDestroy()
     }
@@ -99,5 +102,8 @@ class MainActivity : ComponentActivity() {
         tracking = MaxiCodeParser.formatTracking(parsed.tracking.orEmpty().uppercase())
         postalCode = parsed.postalCode.orEmpty().uppercase()
         city = postalDirectory.cityForPostal(parsed.postalCode).orEmpty()
+        if (parsed.tracking != null) {
+            decodeSound.play()
+        }
     }
 }
