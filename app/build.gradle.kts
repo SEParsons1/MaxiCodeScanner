@@ -31,6 +31,16 @@ android {
         buildConfigField("String", "ERN_NAMES_TOKEN", "\"$ernNamesToken\"")
     }
 
+    flavorDimensions += "device"
+    productFlavors {
+        create("zebra") {
+            dimension = "device"
+        }
+        create("phone") {
+            dimension = "device"
+        }
+    }
+
     buildTypes {
         release {
             isMinifyEnabled = false
@@ -68,6 +78,11 @@ dependencies {
     implementation(libs.androidx.compose.ui.graphics)
     implementation(libs.androidx.compose.ui.tooling.preview)
     implementation(libs.androidx.compose.material3)
+    add("phoneImplementation", libs.androidx.camera.core)
+    add("phoneImplementation", libs.androidx.camera.camera2)
+    add("phoneImplementation", libs.androidx.camera.lifecycle)
+    add("phoneImplementation", libs.androidx.camera.view)
+    add("phoneImplementation", libs.mlkit.barcode)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

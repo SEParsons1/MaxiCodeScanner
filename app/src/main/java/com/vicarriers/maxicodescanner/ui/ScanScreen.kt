@@ -25,11 +25,12 @@ import com.vicarriers.maxicodescanner.ui.theme.Muted
 
 @Composable
 fun ScanScreen(
-    rawPayload: String,
+    rawPayload: String = "",
     tracking: String,
     name: String,
     city: String,
     postalCode: String,
+    showRawPayload: Boolean = true,
     modifier: Modifier = Modifier,
 ) {
     DisableSelection {
@@ -39,7 +40,9 @@ fun ScanScreen(
                 .padding(24.dp),
             verticalArrangement = Arrangement.spacedBy(16.dp),
         ) {
-            RawPayloadField(rawPayload)
+            if (showRawPayload) {
+                RawPayloadField(rawPayload)
+            }
             ResultField(label = "Tracking number", value = tracking)
             ResultField(label = "Name", value = name, maxLines = 2)
             ResultField(label = "City", value = city)

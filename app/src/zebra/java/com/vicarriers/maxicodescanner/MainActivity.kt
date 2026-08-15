@@ -40,6 +40,9 @@ class MainActivity : ComponentActivity() {
         dataWedge = DataWedgeController(this)
         decodeSound = DecodeSound(this)
         ernNames = ErnNamesClient()
+        lifecycleScope.launch(Dispatchers.IO) {
+            ernNames.prefetch()
+        }
         setContent {
             MaxiCodeScannerTheme {
                 Surface(modifier = Modifier.fillMaxSize().systemBarsPadding()) {

@@ -49,6 +49,16 @@ object MaxiCodeParser {
     fun extractTracking(raw: String): String? {
         if (raw.isEmpty()) return null
 
+        val compact = raw.filter { !it.isWhitespace() }
+        val firstField = compact.split(GS, RS, EOT).firstOrNull().orEmpty()
+        if (
+            firstField.length == 18 &&
+            firstField.startsWith("1Z", ignoreCase = true) &&
+            firstField.drop(2).all { it.isLetterOrDigit() }
+        ) {
+            return firstField.uppercase()
+        }
+
         val last8 = trackingTail.find(raw)?.groupValues?.get(1) ?: return null
         val account = extractAccount(raw) ?: return null
         val service = extractService(raw) ?: return null
